@@ -25,14 +25,14 @@ export default function Games() {
 
     return (
         <div className="games">
-            <h1 className="titreGames">Jeux les plus populaires</h1>
+            <h1 className="titleGames">Jeux les plus populaires</h1>
             <div className="flexAccueil">
                 {games.map((game, index) => (
-                    <div key={index} className="carteGames">
-                        <img src={game.box_art_url} alt={`Photo du jeu ${game.name}`} className="imgCarte"/>
+                    <div key={index} className="cardGames">
+                        <img src={game.box_art_url} alt={`Photo du jeu ${game.name}`} className="imgCard"/>
                         <div className="cardBodyGames">
-                            <h5 className="titreCarteGames">{game.name}</h5>
-                            <div className="btnCarte"><p>Regarder {game.name}</p></div>
+                            <h5 className="titleCardGames">{game.name}</h5>
+                            <div className="btnCard"><p>Regarder {game.name}</p></div>
                         </div>
                     </div>
                 ))}

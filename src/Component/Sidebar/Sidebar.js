@@ -55,21 +55,21 @@ export default function Sidebar() {
                 });
                 return stream;
             })
-            setTopStream(finalArray.slice(0,10));
+            setTopStream(finalArray.slice(0,8));
         }
         fetchData()
     }, [])
 
     return (
         <div className="sidebar">
-            <h2 className="titreSidebar">Chaînes recommandées</h2>
-            <ul className="listeStream">
+            <h2 className="titleSidebar">Chaînes recommandées</h2>
+            <ul className="listStream">
                 {topStream.map((stream, index) => (
                     <li key={index} className="containerFlexSidebar">
-                        <img src={stream.truePic} alt={`Photo de profil de ${stream.user_name}`} className="profilePicRonde"/>
+                        <img src={stream.truePic} alt={`Photo de profil de ${stream.user_name}`} className="profilPicRounded"/>
                         <div className="streamUs">{stream.user_name}</div>
                         <div className="viewerRight">
-                            <div className="pointRouge"></div>
+                            <div className="redPoint"></div>
                             <div>{stream.viewer_count}</div>
                         </div>
                         <div className="gameNameSidebar">{stream.gameName}</div>
