@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../api';
 
 export default function TopStreams() {
@@ -57,7 +58,6 @@ export default function TopStreams() {
 
                 return stream;
             })
-            console.log(finalArray)
             setChannels(finalArray);
         }
         fetchData()
@@ -74,7 +74,12 @@ export default function TopStreams() {
                             <h5 className="titleCardStream">{channel.user_name}</h5>
                             <p className="txtStream">Jeu : {channel.gameName}</p>
                             <p className="txtStream viewers">Viewers : {channel.viewer_count}</p>
-                            <div className="btnCard">Regarder {channel.user_name}</div>
+                            <Link
+                                className="link"
+                                to={{pathname: `live/${channel.login}`}}
+                            >
+                                <div className="btnCard">Regarder {channel.user_name}</div>
+                            </Link>                            
                         </div>
                     </div>
                 ))}
