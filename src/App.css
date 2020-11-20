@@ -6,6 +6,7 @@
 body {
   background: #0E0E10;
   font-family: sans-serif;
+  color: #fff;
 }
 
 .App {
@@ -455,5 +456,27 @@ body {
   }
   .profilRounded {
     width: 40px;
+  }
+}
+
+/* 
+////////////////////////
+    PARTIE GAMESTREAM
+////////////////////////
+*/
+.subtitleGameStreams {
+  font-size: 25px;
+  font-weight: 300;
+  padding-left: 260px;
+  padding-bottom: 50px;
+}
+.textColored {
+  color: #6441A5;
+}
+@media screen and (max-width: 1200px) {
+  .subtitleGameStreams {
+    font-size: 17px;
+    padding-left: 0px;
+    padding-bottom: 50px;
   }
 }

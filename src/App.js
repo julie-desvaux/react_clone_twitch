@@ -5,6 +5,7 @@ import Sidebar from './Component/Sidebar/Sidebar';
 import Games from './Component/Games/Games';
 import TopStreams from './Component/TopStreams/TopStreams';
 import Live from './Component/Live/Live';
+import GameStreams from './Component/GameStreams/GameStreams';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" component={Games} />
           <Route exact path="/top-streams" component={TopStreams} />
           <Route exact path="/live/:slug" component={Live} />
+          <Route exact path="/game/:slug" component={GameStreams} />
         </Switch>
       </div>
     </Router>

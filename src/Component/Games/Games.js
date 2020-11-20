@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../api';
 
 export default function Games() {
@@ -32,7 +33,15 @@ export default function Games() {
                         <img src={game.box_art_url} alt={`Photo du jeu ${game.name}`} className="imgCard"/>
                         <div className="cardBodyGames">
                             <h5 className="titleCardGames">{game.name}</h5>
-                            <div className="btnCard"><p>Regarder {game.name}</p></div>
+                            <Link
+                                className="link"
+                                to={{
+                                    pathname: "game/" + game.name,
+                                    state: { gameID: game.id }
+                                }}
+                            >
+                                <div className="btnCard"><p>Regarder {game.name}</p></div>
+                            </Link>
                         </div>
                     </div>
                 ))}
