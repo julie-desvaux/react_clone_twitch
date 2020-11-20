@@ -348,31 +348,48 @@ body {
   margin: 1em;
   text-align: left;
 }
-.profilRounded {
-  width: 80px;
-  border: 0.3em solid #6441A5;
+.profilPicture .profilRounded {
+  width: 65px;
+  border: 0.2em solid #6441A5;
   border-radius: 50%;
   margin-right: 15px;
 }
 .infos {
   display: flex;
-  width: 60%;
+  width: 64%;
+}
+.detailsInfos {
+  width: 70%;
 }
 .infoUser {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: bold;
-  width: 60%;
+  width: 100%;
+}
+.titleGame {
+  font-size: 0.9em;
+  font-weight: 600;
 }
 .nameGame {
   color: #6441A5;
   margin: 0.5em 0;
 }
+.infosGame {
+  display: flex;
+}
 .infoGame {
-
+  background: #3E3E40;
+  border-radius: 9000px;
+  color: #C2C2C3;
+  padding: 5px 10px;
+  text-align: center;
+  margin-right: 10px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .divViewer {
-  width: 40%
+  width: 30%
 }
 .viewer {
   width: 100%;
@@ -380,41 +397,63 @@ body {
   color: #F65855;
 }
 .viewer img {
-  width: 10%;
+  width: 18px;
 }
-/* .containerInfo {
-  color: #fff;
-  display: grid;
-  height: 156px;
-  width: calc(100% - 340px);
-  grid-template: repeat(3, 35px) / 1fr 1fr;
-  margin-top: 5px;
+
+.containerInfosUser {
+  display: flex;
+  background: #18181B;
+  margin: 50px 20px;
+  padding: 30px 0;
+  width: 68%;
 }
-.titleStream {
-  grid-area: 1 / 1 / 2 / 3;
-  text-align: left;
-  margin-left: 5px;
+.pictureProfilFollowers {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pictureProfilFollowers .profilRounded {
+  border-radius: 50%;
+  width: 100px;
+}
+.followers {
+  font-size: 0.8em;
+  margin-top: 10px;
+}
+.username {
+  font-size: 1.8em;
   font-weight: bold;
-  font-size: 20px;
-}
-.viewer {
-  grid-area: 1 / 2 / 2 / 3;
-  text-align: right;
-  color: crimson;
-  font-weight: 400;
-  margin: 3px 5px 0 0;
-}
-.infoGame {
-  grid-area: 2 / 1 / 3 / 3;
   text-align: left;
-  margin-left: 5px;
-  font-weight: 400;
-  font-size: 20px;
+  margin-bottom: 10px;
 }
-.nameGame {
-  grid-area: 3 / 1 / 4 / 2;
-  text-align: left;
-  margin-left: 5px;
-  font-weight: 400;
-  font-size: 20px;
-} */
+
+@media screen and (max-width: 1200px) {
+  .containerDecale {
+    padding-left: 0;
+  }
+  .infos {
+    width: 100%;
+  }
+  .containerInfosUser {
+    width: 100%;
+    margin: 50px 2%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .username {
+    text-align: center;
+    font-size: 1.5em;
+  }
+  .pictureProfilFollowers {
+    margin-bottom: 15px;
+  }
+}
+@media screen and (max-width: 630px) {
+  .viewer {
+    text-align: center;
+  }
+  .profilRounded {
+    width: 40px;
+  }
+}
