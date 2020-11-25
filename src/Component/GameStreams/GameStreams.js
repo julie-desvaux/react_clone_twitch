@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useParams, Link } from 'react-router-dom';
 import api from '../../api';
+import Loader from '../Loader/Loader';
 
 export default function GameStreams() {
 
@@ -8,6 +9,7 @@ export default function GameStreams() {
     let { slug } = useParams();
     const [streamData, setStreamData] = useState([]);
     const [viewers, setViewers] = useState(0);
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
 
@@ -47,35 +49,40 @@ export default function GameStreams() {
             })
             setViewers(totalViewers);
             setStreamData(finalArray);
+            setLoader(false);
         }
         fetchData();
     }, [location])
 
     return (
-        <div>
-            <h1 className="titleGames">Streams : {slug}</h1>
-            <h3 className="subtitleGameStreams">
-                <strong className="textColored">{viewers}</strong> personnes regardent {slug}
-            </h3>
-            <div className="flexAccueil">
-                {streamData.map((stream, index) => (
-                    <div key={index} className="cardStream">
-                        <img src={stream.thumbnail_url} alt={`jeu ${slug}`} className="imgCard"/>
-                        <div className="cardBodyStream">
-                            <h5 className="titleCardStream">{stream.user_name}</h5>
-                            <p className="txtStream">Nombre de viewers : {stream.viewer_count}</p>
-                            <Link
-                                className="link"
-                                to={{
-                                    pathname: `/live/${stream.login}`
-                                }}
-                            >
-                                <div className="btnCard">Regarder {stream.user_name}</div>
-                            </Link>
+        loader ? (
+            <Loader />
+        ):(
+            <div>
+                <h1 className="titleGames">Streams : {slug}</h1>
+                <h3 className="subtitleGameStreams">
+                    <strong className="textColored">{viewers}</strong> personnes regardent {slug}
+                </h3>
+                <div className="flexAccueil">
+                    {streamData.map((stream, index) => (
+                        <div key={index} className="cardStream">
+                            <img src={stream.thumbnail_url} alt={`jeu ${slug}`} className="imgCard"/>
+                            <div className="cardBodyStream">
+                                <h5 className="titleCardStream">{stream.user_name}</h5>
+                                <p className="txtStream">Nombre de viewers : {stream.viewer_count}</p>
+                                <Link
+                                    className="link"
+                                    to={{
+                                        pathname: `/live/${stream.login}`
+                                    }}
+                                >
+                                    <div className="btnCard">Regarder {stream.user_name}</div>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
+        )
     )
 }

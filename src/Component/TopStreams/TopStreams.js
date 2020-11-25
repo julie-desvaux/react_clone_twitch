@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../api';
+import Loader from '../Loader/Loader';
 
 export default function TopStreams() {
 
     const [channels, setChannels] = useState([]);
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -59,31 +61,36 @@ export default function TopStreams() {
                 return stream;
             })
             setChannels(finalArray);
+            setLoader(false);
         }
         fetchData()
     }, [])
 
     return (
-        <div className="top-streams">
-            <h1 className="titleGames">Stream les plus populaires</h1>
-            <div className="flexAccueil">
-                {channels.map((channel, index) => (
-                    <div key={index} className="cardStream">
-                        <img className="imgCard" src={channel.thumbnail_url} alt={`Stream du jeu ${channel.gameName}`}/>
-                        <div className="cardBodyStream">
-                            <h5 className="titleCardStream">{channel.user_name}</h5>
-                            <p className="txtStream">Jeu : {channel.gameName}</p>
-                            <p className="txtStream viewers">Viewers : {channel.viewer_count}</p>
-                            <Link
-                                className="link"
-                                to={{pathname: `live/${channel.login}`}}
-                            >
-                                <div className="btnCard">Regarder {channel.user_name}</div>
-                            </Link>                            
+        loader ? (
+            <Loader />
+        ):(
+            <div className="top-streams">
+                <h1 className="titleGames">Stream les plus populaires</h1>
+                <div className="flexAccueil">
+                    {channels.map((channel, index) => (
+                        <div key={index} className="cardStream">
+                            <img className="imgCard" src={channel.thumbnail_url} alt={`Stream du jeu ${channel.gameName}`}/>
+                            <div className="cardBodyStream">
+                                <h5 className="titleCardStream">{channel.user_name}</h5>
+                                <p className="txtStream">Jeu : {channel.gameName}</p>
+                                <p className="txtStream viewers">Viewers : {channel.viewer_count}</p>
+                                <Link
+                                    className="link"
+                                    to={{pathname: `live/${channel.login}`}}
+                                >
+                                    <div className="btnCard">Regarder {channel.user_name}</div>
+                                </Link>                            
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
+        )
     )
 }

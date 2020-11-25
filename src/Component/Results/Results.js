@@ -1,23 +1,29 @@
 import { useState, useEffect } from 'react';
-import api from '../../api';
 import { Link, useParams } from 'react-router-dom';
+import api from '../../api';
+import Loader from '../Loader/Loader';
 
 export default function Results() {
 
     let { slug } = useParams();
     let cleanSearch = slug.replace(/ /g,'');
     const [streamerInfo, setStreamerInfo] = useState([]);
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await api.get(`https://api.twitch.tv/helix/users?login=${cleanSearch}`);
 
             setStreamerInfo(result.data.data);
+            setLoader(false);
         }
         fetchData()
     }, [slug, cleanSearch])
 
     return (
+        loader ? (
+            <Loader />
+        ):(
             <div className="containerDecaleResult">
                 {streamerInfo.length !== 0 ? 
                     (
@@ -50,5 +56,6 @@ export default function Results() {
                     )
                 }
             </div>
+        )
     )
 }
