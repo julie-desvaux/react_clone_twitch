@@ -1,7 +1,7 @@
 # React Clone Twitch
 
 ## Description :
-* Clone de certaines fonctionnalité de Twitch
+* Clone de certaines fonctionnalités de Twitch
 * Searchbar pour rechercher un streamer
 * Possibilité de regarder un streamer, de chatter via React Twitch Embed Video
 
