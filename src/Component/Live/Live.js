@@ -25,11 +25,8 @@ export default function Live() {
             let gameName = resultNameGame.data.data.map(game => {
                 return game.name
             })
-            console.log("result", result);
 
             const resultUser = await api.get(`https://api.twitch.tv/helix/users?id=${result.data.data[0].user_id}`);
-
-            console.log("resultUser", resultUser);
 
             const resultTagsUser = await api.get(`https://api.twitch.tv/helix/streams/tags?broadcaster_id=${result.data.data[0].user_id}`);
 
@@ -43,7 +40,7 @@ export default function Live() {
         }
 
         fetchData()
-    }, [])
+    }, [slug])
 
     return (
         <div className="containerDecale">
@@ -56,7 +53,7 @@ export default function Live() {
                 <div className="profilPicture">
                     <img 
                         src={infoUser.profile_image_url} 
-                        alt={`Photo de profil de ${infoUser.user_name}`} 
+                        alt={`${infoUser.user_name}`} 
                         className="profilRounded"
                     />
                 </div>
@@ -90,7 +87,7 @@ export default function Live() {
                 <div className="pictureProfilFollowers">
                     <img 
                         src={infoUser.profile_image_url} 
-                        alt={`Photo de profil de ${infoUser.user_name}`} 
+                        alt={`${infoUser.user_name}`} 
                         className="profilRounded"
                     />
                     <div className="followers">

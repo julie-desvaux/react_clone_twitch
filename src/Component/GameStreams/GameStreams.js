@@ -45,13 +45,11 @@ export default function GameStreams() {
                 });
                 return stream;
             })
-            console.log(totalViewers);
-            console.log(finalArray);
             setViewers(totalViewers);
             setStreamData(finalArray);
         }
         fetchData();
-    }, [])
+    }, [location])
 
     return (
         <div>
@@ -62,7 +60,7 @@ export default function GameStreams() {
             <div className="flexAccueil">
                 {streamData.map((stream, index) => (
                     <div key={index} className="cardStream">
-                        <img src={stream.thumbnail_url} alt={`Image du stream du jeu ${slug}`} className="imgCard"/>
+                        <img src={stream.thumbnail_url} alt={`jeu ${slug}`} className="imgCard"/>
                         <div className="cardBodyStream">
                             <h5 className="titleCardStream">{stream.user_name}</h5>
                             <p className="txtStream">Nombre de viewers : {stream.viewer_count}</p>

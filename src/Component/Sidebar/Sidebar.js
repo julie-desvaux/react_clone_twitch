@@ -66,7 +66,7 @@ export default function Sidebar() {
             <ul className="listStream">
                 {topStream.map((stream, index) => (
                     <li key={index} className="containerFlexSidebar">
-                        <img src={stream.truePic} alt={`Photo de profil de ${stream.user_name}`} className="profilPicRounded"/>
+                        <img src={stream.truePic} alt={`${stream.user_name}`} className="profilPicRounded"/>
                         <div className="streamUs">{stream.user_name}</div>
                         <div className="viewerRight">
                             <div className="redPoint"></div>
