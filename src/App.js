@@ -10,7 +10,7 @@ import Results from './Component/Results/Results';
 
 function App() {
   return (
-    <Router>
+    <Router forceRefresh={true}>
       <div className="App">
         <Header />
         <Sidebar />
